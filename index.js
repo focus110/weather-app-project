@@ -3,6 +3,7 @@ const app = express();
 const users = require("./routes/users");
 const auth = require("./routes/auth");
 const weather = require("./routes/weather");
+const bookmark = require("./routes/bookmark");
 const cors = require("cors");
 
 // database
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", users);
 app.use("/api/auth", auth);
 app.use("/api/weather", weather);
+app.use("/api/bookmark", bookmark);
 
 // remove before deploy
 app.get("/", (req, res) => {

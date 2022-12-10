@@ -121,36 +121,13 @@ class UserController {
     try {
       const id = req.user.id;
 
-      const {
-        firstname,
-        middlename,
-        lastname,
-        email,
-        phone,
-        gender,
-        dob,
-        religion,
-        address,
-        nationality,
-        state,
-        lga,
-        password,
-      } = req.body;
+      const { name, email, company, password } = req.body;
 
       // Build user object
       const userFields = {};
-      if (firstname) userFields.firstname = firstname;
-      if (middlename) userFields.middlename = middlename;
-      if (lastname) userFields.lastname = lastname;
+      if (name) userFields.name = name;
       if (email) userFields.email = email;
-      if (phone) userFields.phone = phone;
-      if (gender) userFields.gender = gender;
-      if (dob) userFields.dob = dob;
-      if (religion) userFields.religion = religion;
-      if (address) userFields.home_address = address;
-      if (nationality) userFields.nationality = nationality;
-      if (state) userFields.state_of_origin = state;
-      if (lga) userFields.local_gov = lga;
+      if (company) userFields.company = company;
       // if password is provided then bcrypt password
       if (password) userFields.password = bcrypt.hashSync(password, 10);
 
@@ -166,8 +143,6 @@ class UserController {
         return res
           .status(500)
           .send(response(" User with the given ID does not exists", {}, false));
-
-      // check if phone is verified
 
       // check if email is verified
 
